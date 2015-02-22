@@ -1,0 +1,15 @@
+{
+ 	"name": "davidemarrone/mysql-general-log-colorizer",
+	"description": "Parse and colorize Mysql General Query Log File",
+	"homepage": "https://github.com/davidemarrone/MysqlGeneralLogColorizer/",
+	"authors": [
+		{
+			"name": "Davide Marrone",
+			"email": "davide@skebby.com"
+		}
+	], 	
+	"keywords": ["mysql", "log", "highlight"],
+    "autoload": {
+        "psr-4": {"": "src/"}
+    }
+}
