@@ -1,5 +1,6 @@
 Mysql General Log Colorizer 
 ===========================
+[![Build Status](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer.svg?branch=master)](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer)
 
 This is a log colorizer for [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily if a query is done to a *Master* database or to a *Slave* in a Master/Slave environment.
 
@@ -41,7 +42,6 @@ SET GLOBAL log='/var/log/mysql-general-query.log';
 
 TODO
 ----
-* Add support for travis
 * Review colors for each Command
 
 * Add parameter to discard specific Command: Quit, Query SET ...
