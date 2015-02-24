@@ -9,6 +9,8 @@ use MysqlGeneralLogColorizer\Command\LastCommandNewLine;
 class CommandFactory
 {
 
+    const EXAMPLE_OF_DATE_TIME_AT_BEGINNING_OF_LINE = '150221 11:16:48';
+
     /**
      * In some lines is present at the beginning at the line the date and time
      * if present is stripped
@@ -17,7 +19,7 @@ class CommandFactory
     {
         $isDateTimePresent = preg_match('#^[0-9]{6}[ ][0-9]{2}:[0-9]{2}:[0-9]{2}\t#', $rawLine);
         if ($isDateTimePresent) {
-            $dateTimeLength = strlen('150221 11:16:48');
+            $dateTimeLength = strlen(self::EXAMPLE_OF_DATE_TIME_AT_BEGINNING_OF_LINE);
             $rawLine = substr($rawLine, $dateTimeLength);
         }
         return $rawLine;
@@ -29,14 +31,15 @@ class CommandFactory
      */
     private function isNewLogEntry($rawLine)
     {
-        $mysqlLogKeywords = implode('|', array(
+        // TODO: Add all keywords present in AbstractCommand to improve parsing?
+        $mysqlCommandKeywords = implode('|', array(
             'Connect',
             'Query',
             'Init DB',
             'Quit'
         ));
         
-        return $isNewLogEntry = preg_match(sprintf('#[ ][0-9]+[ ](%s)\t#', $mysqlLogKeywords), $rawLine);
+        return $isNewLogEntry = preg_match(sprintf('#[ ][0-9]+[ ](%s)\t#', $mysqlCommandKeywords), $rawLine);
     }
 
     public function createCommandFromLogEntry($rawLine)
