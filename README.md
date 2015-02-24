@@ -8,13 +8,23 @@ This program keep track of every id logged with the *Connect* statement and when
 
 To understand if the *Connect* is done to master or slave database it simple try to search for "master" keyword in the username logged on the Connect (can be improved).
 
+Install
+-------
+
+```
+wget https://github.com/davidemarrone/MysqlGeneralLogColorizer/releases/download/v1.0.0/mysql-general-log-colorizer.phar
+
+chmod +x mysql-general-log-colorizer.phar
+
+sudo mv mysql-general-log-colorizer.phar /usr/local/bin/mysql-general-log-colorizer
+```
 
 Usage
 -----
 
-To enable the logging of every query see [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html)
+First of all enable the Mysql General Log that logs every query see [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html)
 
-###For Mysql >=  5.1.29
+####For Mysql >=  5.1.29
 
 my.cnf in the [mysqld] section
 ```
@@ -28,7 +38,7 @@ SET GLOBAL general_log_file='/var/log/mysql-general-query.log';
 SET GLOBAL general_log=1;
 ```
 
-###For Mysql <=  5.1.12
+####For Mysql <=  5.1.12
 
 my.cnf in the [mysqld] section
 ```
@@ -40,15 +50,21 @@ command line
 SET GLOBAL log='/var/log/mysql-general-query.log';
 ```
 
+####Run it
+
+It simple reads from stdin
+```
+tail -f /var/log/mysql-general-query.log | mysql-general-log-colorizer
+```
+
 TODO
 ----
 * Review colors for each Command
-
 * Add parameter to discard specific Command: Quit, Query SET ...
 * Add more tests on log analyzer when the final colors are completely defined
 * Complete MysqlGeneralLogColorizerTest when final colors are completely defined
 * Add specific colors for transactions
-* Improve the detection of master connections
+* Improve the detection of master connections (Add parameter)
 * Format SQL with https://github.com/jdorn/sql-formatter
 * Create a new library to handle the output colors
 * Create a screenshot example
