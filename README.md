@@ -28,13 +28,13 @@ First of all enable the Mysql General Log that logs every query see [Mysql Gener
 
 ####For Mysql >=  5.1.29
 
-my.cnf in the [mysqld] section
+Configuration for my.cnf in the [mysqld] section
 ```
 general_log_file=/var/log/mysql-general-query.log
 general_log=1
 ```
 
-console
+Or directly from the console with root permissions
 ```
 SET GLOBAL general_log_file='/var/log/mysql-general-query.log';
 SET GLOBAL general_log=1;
@@ -42,12 +42,12 @@ SET GLOBAL general_log=1;
 
 ####For Mysql <=  5.1.12
 
-my.cnf in the [mysqld] section
+Configuration for my.cnf in the [mysqld] section
 ```
 log=/var/log/mysql-general-query.log
 ```
 
-console
+Or directly from the console with root permissions
 ```
 SET GLOBAL log='/var/log/mysql-general-query.log';
 ```
