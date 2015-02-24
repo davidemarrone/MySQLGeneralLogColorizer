@@ -4,6 +4,8 @@ Mysql General Log Colorizer
 
 This is a log colorizer for [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily if a query is done to a *Master* database or to a *Slave* one in a Master/Slave environment.
 
+![Colorizer example](/docs/screenshot.png?raw=true "Here a simple example")
+
 This program keeps track of every id logged with the *Connect* statement and when a *Query* statement is analyzed it colorize the line with green if is done on the Slave connection or red if is done on the Master connection.
 
 To understand if the connection was to a master or slave database it simple try to search for "master" keyword in the username logged (can be improved).
