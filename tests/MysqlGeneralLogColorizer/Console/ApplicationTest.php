@@ -22,4 +22,15 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $app = new Console\Application();
         $app->colorize($filePointer);
     }
+
+    public function testEnd2EndWithSimpleExampleFile()
+    {
+        $filePointer = fopen(__DIR__ . '/../../fixtures/oneMasterOneSlave.txt', 'r');
+        
+        $outputString = file_get_contents(__DIR__ . '/../../fixtures/oneMasterOneSlave.txt.expected');
+        $this->expectOutputString($outputString);
+        
+        $app = new Console\Application();
+        $app->colorize($filePointer);
+    }
 }

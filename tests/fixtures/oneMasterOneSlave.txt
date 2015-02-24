@@ -1,0 +1,9 @@
+		  402 Connect	phpMasterGeneric@192.168.1.1 on myDb
+		  402 Query	SET NAMES UTF8, time_zone = "+0:00"
+		  402 Query	SELECT * FROM customer WHERE idCustomer = 1
+		  403 Connect	phpSlaveGeneric@192.168.1.2 on myDb
+		  403 Query	SET NAMES UTF8, time_zone = "+0:00"
+		  403 Query	SELECT * FROM customer
+		  403 Query	SELECT email
+                    FROM customer
+                    WHERE idCustomer = 1

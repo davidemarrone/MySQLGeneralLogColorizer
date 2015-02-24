@@ -61,12 +61,9 @@ tail -f /var/log/mysql-general-query.log | mysql-general-log-colorizer
 
 TODO
 ----
-* Add parameter to discard specific Command: Quit, Query SET ...
 * Add more tests on log analyzer when the final colors are completely defined
-* Complete MysqlGeneralLogColorizerTest when final colors are completely defined
 * Add specific colors for transactions
 * Improve the detection of master connections (Add parameter)
+* Add parameter to discard specific Commands: Quit, Query SET ...
 * Format SQL with https://github.com/jdorn/sql-formatter
 * Create a new library to handle the output colors
-* Create a screenshot example
-
