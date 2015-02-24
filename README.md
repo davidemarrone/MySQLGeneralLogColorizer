@@ -2,11 +2,11 @@ Mysql General Log Colorizer
 ===========================
 [![Build Status](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer.svg?branch=master)](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer)
 
-This is a log colorizer for [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily if a query is done to a *Master* database or to a *Slave* in a Master/Slave environment.
+This is a log colorizer for [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily if a query is done to a *Master* database or to a *Slave* one in a Master/Slave environment.
 
-This program keep track of every id logged with the *Connect* statement and when a *Query* statement is analyzed it colorize the line with green if is done on Slave and red if is done on the Master connection.
+This program keeps track of every id logged with the *Connect* statement and when a *Query* statement is analyzed it colorize the line with green if is done on the Slave connection or red if is done on the Master connection.
 
-To understand if the *Connect* is done to master or slave database it simple try to search for "master" keyword in the username logged on the Connect (can be improved).
+To understand if the connection was to a master or slave database it simple try to search for "master" keyword in the username logged (can be improved).
 
 Install
 -------
@@ -32,7 +32,7 @@ general_log_file=/var/log/mysql-general-query.log
 general_log=1
 ```
 
-command line
+console
 ```
 SET GLOBAL general_log_file='/var/log/mysql-general-query.log';
 SET GLOBAL general_log=1;
@@ -45,7 +45,7 @@ my.cnf in the [mysqld] section
 log=/var/log/mysql-general-query.log
 ```
 
-command line
+console
 ```
 SET GLOBAL log='/var/log/mysql-general-query.log';
 ```
@@ -68,3 +68,4 @@ TODO
 * Format SQL with https://github.com/jdorn/sql-formatter
 * Create a new library to handle the output colors
 * Create a screenshot example
+
