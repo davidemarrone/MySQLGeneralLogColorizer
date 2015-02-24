@@ -44,7 +44,6 @@ TODO
 ----
 * Review colors for each Command
 
-* Fix autoloading on bin/mysql-general-log-colorizer
 * Add parameter to discard specific Command: Quit, Query SET ...
 * Add more tests on log analyzer when the final colors are completely defined
 * Complete MysqlGeneralLogColorizerTest when final colors are completely defined
