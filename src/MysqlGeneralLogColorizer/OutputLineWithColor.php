@@ -8,7 +8,7 @@ class OutputLineWithColor
 
     const RED = "\033[0;31m";
 
-    const GREEN = "\033[0;92m";
+    const GREEN = "\033[0;32m";
 
     const GREY = "\033[0;97m";
 
