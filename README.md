@@ -1,14 +1,24 @@
-Mysql General Log Colorizer 
+MySQL General Log Colorizer 
 ===========================
 [![Build Status](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer.svg?branch=master)](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer)
 
-This is a log colorizer for [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily if a query is done to a *Master* database or to a *Slave* one in a Master/Slave environment.
+Who is this tool for?
+---------------------
 
-![Colorizer example](/docs/screenshot.png?raw=true "Here a simple example")
+This tool is for you if you are in this situation:
 
-This program keeps track of every id logged with the *Connect* statement and when a *Query* statement is analyzed it colorize the line with green if is done on the Slave connection or red if is done on the Master connection.
+* You are developing an application that use MySQL with a Master/Slave configuration
+* You want to test your code on your local machine with only one MySQL instance 
+* You use two different connections for Master and Slave and you simulate the Master/Slave setup with different username or different IP address on the same instance
+* You usually develop watching the MySQL general log to understand what SQL queries your ORM (or DBAL, Framework, ...) is generating and on which connection they are executed
 
-To understand if the connection was to a master or slave database it simple try to search for "master" keyword in the username logged (can be improved).
+This tool is a log colorizer for [MySQL General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily, in a testing environment, if a query is done to a *Master* connection or to a *Slave* one.
+
+![Colorizer example](/docs/screenshot.png?raw=true "Example of the tool output")
+
+This tool keeps track of every *id* logged with the *Connect* statement and when a *Query* statement is analyzed it colorize the line with green if is done on the Slave connection or red if is done on the Master connection.
+
+To understand what connection was used it simple try to search for "master" keyword in the username logged with *Connect* (will be improved soon).
 
 Install
 -------
@@ -24,9 +34,9 @@ sudo mv mysql-general-log-colorizer.phar /usr/local/bin/mysql-general-log-colori
 Usage
 -----
 
-First of all enable the Mysql General Log that logs every query see [Mysql General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html)
+First of all enable the MySQL General Log that logs every query see [MySQL General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html)
 
-####For Mysql >=  5.1.29
+####For MySQL >=  5.1.29
 
 Configuration for my.cnf in the [mysqld] section
 ```
@@ -40,7 +50,7 @@ SET GLOBAL general_log_file='/var/log/mysql-general-query.log';
 SET GLOBAL general_log=1;
 ```
 
-####For Mysql <=  5.1.12
+####For MySQL <=  5.1.12
 
 Configuration for my.cnf in the [mysqld] section
 ```
@@ -61,9 +71,9 @@ tail -f /var/log/mysql-general-query.log | mysql-general-log-colorizer
 
 TODO
 ----
+* Improve the detection of master connections (Add parameter for IP address)
 * Add more tests on log analyzer when the final colors are completely defined
 * Add specific colors for transactions
-* Improve the detection of master connections (Add parameter)
-* Add parameter to discard specific Commands: Quit, Query SET ...
+* Add parameter to discard specific Commands: Quit, Query SET ... ?
 * Format SQL with https://github.com/jdorn/sql-formatter
 * Create a new library to handle the output colors
