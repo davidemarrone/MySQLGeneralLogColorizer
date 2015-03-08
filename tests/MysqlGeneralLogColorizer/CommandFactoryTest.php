@@ -28,6 +28,20 @@ class CommandFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $command->isMasterConnection());
     }
 
+    public function testParsingConnectLogEntryWithDifferentMasterPattern()
+    {
+        $mysqlLog = "		  322 Connect	genericUser@192.168.1.1 on mydb";
+        $masterPattern = '@192.168.1.1';
+        $commandFactory = new CommandFactory();
+        $commandFactory->setMasterPatternForConnect($masterPattern);
+        $command = $commandFactory->createCommandFromLogEntry($mysqlLog);
+        $this->assertInstanceOf('MysqlGeneralLogColorizer\Command\Connect', $command);
+        $this->assertEquals(322, $command->getIdConnection());
+        $this->assertEquals('genericUser@192.168.1.1', $command->getUsernameWithHost());
+        $this->assertEquals('mydb', $command->getDatabase());
+        $this->assertEquals(true, $command->isMasterConnection());
+    }
+
     public function testParsingConnectLogEntryWithDate()
     {
         $mysqlLog = "150206 11:19:00	 832 Connect	phpMasterGeneric@localhost on mydb";
