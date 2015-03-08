@@ -16,7 +16,7 @@ This tool is a log colorizer for [MySQL General Query Log](http://dev.mysql.com/
 
 ![Colorizer example](/docs/screenshot.png?raw=true "Example of a colorized log")
 
-To understand if a query is done on a master connection the tool by default search for "master" keyword in the username logged with *Connect*, you can specify another username or IP/host using the *-m* switch.
+To understand if a query is done on a master connection the tool by default search for "master" keyword in the username logged with *Connect*, you can specify another username or IP/host using the *-m* argument.
 
 Install
 -------
@@ -32,7 +32,7 @@ sudo mv mysql-general-log-colorizer.phar /usr/local/bin/mysql-general-log-colori
 Usage
 -----
 
-First of all enable the MySQL General Log that logs every query see [MySQL General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html)
+First of all enable the MySQL General Log that logs every query, see [MySQL General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html)
 
 ####For MySQL >=  5.1.29
 
@@ -65,6 +65,11 @@ SET GLOBAL log='/var/log/mysql-general-query.log';
 It simple reads from stdin
 ```
 tail -f /var/log/mysql-general-query.log | mysql-general-log-colorizer
+```
+
+To specify the master username or IP/host use -m
+```
+tail -f /var/log/mysql-general-query.log | mysql-general-log-colorizer -m yourMasterUsername
 ```
 
 TODO

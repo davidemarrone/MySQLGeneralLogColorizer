@@ -23,7 +23,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $app->colorize($filePointer);
     }
 
-    public function testEnd2EndWithSimpleExampleFile()
+    public function testEnd2EndOneMasterOneSlaveWithDifferentUsername()
     {
         $filePointer = fopen(__DIR__ . '/../../fixtures/oneMasterOneSlaveDifferentUsername.txt', 'r');
         
@@ -32,6 +32,18 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         
         $app = new Console\Application();
         $app->colorize($filePointer);
+    }
+
+    public function testEnd2EndOneMasterOneSlaveWithDifferentIpSameUsername()
+    {
+        $masterPattern = '@127.0.0.1';
+        $filePointer = fopen(__DIR__ . '/../../fixtures/oneMasterOneSlaveDifferentIp.txt', 'r');
+        
+        $outputString = file_get_contents(__DIR__ . '/../../fixtures/oneMasterOneSlaveDifferentIp.txt.expected');
+        $this->expectOutputString($outputString);
+        
+        $app = new Console\Application();
+        $app->colorize($filePointer, $masterPattern);
     }
 
     public static function masterOptions()

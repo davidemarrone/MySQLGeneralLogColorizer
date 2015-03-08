@@ -1,0 +1,10 @@
+[0;94m		  102 Connect	genericUser@127.0.0.1 on myDb
+[0m[0;31m		  102 Query	SET NAMES UTF8, time_zone = "+0:00"
+[0m[0;31m		  102 Query	SELECT * FROM customer WHERE idCustomer = 1
+[0m[0;94m		  103 Connect	genericUser@192.168.1.1 on myDb
+[0m[0;32m		  103 Query	SET NAMES UTF8, time_zone = "+0:00"
+[0m[0;32m		  103 Query	SELECT * FROM customer WHERE username LIKE 'a%'
+[0m[0;32m		  103 Query	SELECT email
+[0m[0;32m                    FROM customer
+[0m[0;32m                    WHERE idCustomer = 1
+[0m
