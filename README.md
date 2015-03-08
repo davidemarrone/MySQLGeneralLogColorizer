@@ -8,8 +8,8 @@ Who is this tool for?
 This tool is for you if you are in this situation:
 
 * You are developing an application that use MySQL with a Master/Slave configuration
-* You want to test your code in your local test environment with only **one** MySQL instance 
-* You use two different connections for Master and Slave and you simulate the Master/Slave setup with different username or different IP address/host on the same instance
+* You want to test your code in your local environment with only **one** MySQL instance 
+* You use two different connections for Master and Slave and you simulate the Master/Slave configuration with different username or different IP address/host on the same instance
 * You usually develop watching the MySQL general log to understand what SQL queries your ORM (or DBAL, Framework, ...) is generating and on which connection they are executed
 
 This tool is a log colorizer for [MySQL General Query Log](http://dev.mysql.com/doc/refman/5.6/en/query-log.html), the main goal of this software is to show easily, in a testing environment, if a query is done on a **Master** connection or on a **Slave** one. It keeps track of every *id* logged with the **Connect** statement and when a **Query** statement is analyzed it colorize the line with *green* if is done on the Slave connection or *red* if is done on the Master connection. Here a simple example:
@@ -22,7 +22,7 @@ Install
 -------
 
 ```
-wget https://github.com/davidemarrone/MysqlGeneralLogColorizer/releases/download/v1.0.0/mysql-general-log-colorizer.phar
+wget https://github.com/davidemarrone/MysqlGeneralLogColorizer/releases/download/v1.1.0/mysql-general-log-colorizer.phar
 
 chmod +x mysql-general-log-colorizer.phar
 
