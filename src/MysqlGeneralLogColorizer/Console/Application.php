@@ -84,8 +84,9 @@ class Application
     public function run()
     {
         $options = $this->handleArguments();
+        $masterPattern = isset($options['masterPattern']) ? $options['masterPattern'] : null;
         $stdin = fopen('php://stdin', 'r');
-        $this->colorize($stdin);
+        $this->colorize($stdin, $masterPattern);
     }
 }
 

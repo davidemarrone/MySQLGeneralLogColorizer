@@ -1,0 +1,9 @@
+		  102 Connect	genericUser@127.0.0.1 on myDb
+		  102 Query	SET NAMES UTF8, time_zone = "+0:00"
+		  102 Query	SELECT * FROM customer WHERE idCustomer = 1
+		  103 Connect	genericUser@192.168.1.1 on myDb
+		  103 Query	SET NAMES UTF8, time_zone = "+0:00"
+		  103 Query	SELECT * FROM customer WHERE username LIKE 'a%'
+		  103 Query	SELECT email
+                    FROM customer
+                    WHERE idCustomer = 1
