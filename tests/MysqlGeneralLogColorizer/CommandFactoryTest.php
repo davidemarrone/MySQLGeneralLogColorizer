@@ -11,9 +11,9 @@ class CommandFactoryTest extends \PHPUnit_Framework_TestCase
         $command = $commandFactory->createCommandFromLogEntry($mysqlLog);
         $this->assertInstanceOf('MysqlGeneralLogColorizer\Command\Connect', $command);
         $this->assertEquals(832, $command->getIdConnection());
-        $this->assertEquals('phpSlaveGeneric@localhost', $command->getUsername());
+        $this->assertEquals('phpSlaveGeneric@localhost', $command->getUsernameWithHost());
         $this->assertEquals('mydb', $command->getDatabase());
-        $this->assertEquals(false, $command->containsMasterUsername());
+        $this->assertEquals(false, $command->isMasterConnection());
     }
 
     public function testParsingConnectLogEntryWithoutDatabase()
@@ -23,9 +23,9 @@ class CommandFactoryTest extends \PHPUnit_Framework_TestCase
         $command = $commandFactory->createCommandFromLogEntry($mysqlLog);
         $this->assertInstanceOf('MysqlGeneralLogColorizer\Command\Connect', $command);
         $this->assertEquals(322, $command->getIdConnection());
-        $this->assertEquals('root@localhost', $command->getUsername());
+        $this->assertEquals('root@localhost', $command->getUsernameWithHost());
         $this->assertEquals('', $command->getDatabase());
-        $this->assertEquals(false, $command->containsMasterUsername());
+        $this->assertEquals(false, $command->isMasterConnection());
     }
 
     public function testParsingConnectLogEntryWithDate()
@@ -35,9 +35,9 @@ class CommandFactoryTest extends \PHPUnit_Framework_TestCase
         $command = $commandFactory->createCommandFromLogEntry($mysqlLog);
         $this->assertInstanceOf('MysqlGeneralLogColorizer\Command\Connect', $command);
         $this->assertEquals(832, $command->getIdConnection());
-        $this->assertEquals('phpMasterGeneric@localhost', $command->getUsername());
+        $this->assertEquals('phpMasterGeneric@localhost', $command->getUsernameWithHost());
         $this->assertEquals('mydb', $command->getDatabase());
-        $this->assertEquals(true, $command->containsMasterUsername());
+        $this->assertEquals(true, $command->isMasterConnection());
     }
 
     public function testParsingQueryLogEntryQithoutDate()

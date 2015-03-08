@@ -33,4 +33,30 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $app = new Console\Application();
         $app->colorize($filePointer);
     }
+
+    public static function masterOptions()
+    {
+        return array(
+            array(
+                'm'
+            ),
+            array(
+                'master-pattern'
+            )
+        );
+    }
+
+    /**
+     * @dataProvider masterOptions
+     */
+    public function testGetOptionMasterOptions($option)
+    {
+        $parsedOption = array();
+        $parsedOption[$option[0]] = 'master';
+        
+        $app = new Console\Application();
+        $options = $app->getOptions($parsedOption);
+        
+        $this->assertEquals('master', $options['masterPattern']);
+    }
 }

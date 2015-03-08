@@ -30,7 +30,7 @@ class LogAnalyzer
             $color = null;
             try {
                 $connection = $this->connectionRegistry->getConnection($command->getIdConnection());
-                $color = $connection->containsMasterUsername() ? OutputLineWithColor::RED : OutputLineWithColor::GREEN;
+                $color = $connection->isMasterConnection() ? OutputLineWithColor::RED : OutputLineWithColor::GREEN;
             } catch (\InvalidArgumentException $iag) {
                 $color = OutputLineWithColor::GREY;
             }

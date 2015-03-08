@@ -4,29 +4,34 @@ namespace MysqlGeneralLogColorizer\Command;
 class Connect extends AbstractCommand
 {
 
-    private $username;
+    private $usernameWithHost;
 
     private $database;
 
-    private $containsMasterUsername;
+    private $isMasterConnection;
 
-    const MASTER_USERNAME_PATTERN = 'master';
+    const DEFAULT_MASTER_PATTERN = 'master';
 
-    public function __construct($rawLine, $idConnection, $username, $database)
+    public function __construct($rawLine, $idConnection, $usernameWithHost, $database, $masterPattern = null)
     {
         parent::__construct($rawLine, $idConnection);
-        $this->username = $username;
+        $this->usernameWithHost = $usernameWithHost;
         $this->database = $database;
-        if (stripos($this->username, self::MASTER_USERNAME_PATTERN) !== false) {
-            $this->containsMasterUsername = true;
+
+        if (null == $masterPattern){
+            $masterPattern = self::DEFAULT_MASTER_PATTERN;
+        }
+
+        if (stripos($this->usernameWithHost, $masterPattern) !== false) {
+            $this->isMasterConnection = true;
         } else {
-            $this->containsMasterUsername = false;
+            $this->isMasterConnection = false;
         }
     }
 
-    public function getUsername()
+    public function getUsernameWithHost()
     {
-        return $this->username;
+        return $this->usernameWithHost;
     }
 
     public function getDatabase()
@@ -34,8 +39,8 @@ class Connect extends AbstractCommand
         return $this->database;
     }
 
-    public function containsMasterUsername()
+    public function isMasterConnection()
     {
-        return $this->containsMasterUsername;
+        return $this->isMasterConnection;
     }
 }

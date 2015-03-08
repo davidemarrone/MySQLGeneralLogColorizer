@@ -19,9 +19,9 @@ class LogAnalyzerTest extends \PHPUnit_Framework_TestCase
         $connect = $analyzer->getConnectionRegistry()->getConnection(1);
         $this->assertInstanceOf('MysqlGeneralLogColorizer\Command\Connect', $connect);
         $this->assertEquals(1, $command->getIdConnection());
-        $this->assertEquals('phpMaster@localhost', $command->getUsername());
+        $this->assertEquals('phpMaster@localhost', $command->getUsernameWithHost());
         $this->assertEquals('mydb', $command->getDatabase());
-        $this->assertEquals(true, $command->containsMasterUsername());
+        $this->assertEquals(true, $command->isMasterConnection());
         
         $this->assertInstanceOf('MysqlGeneralLogColorizer\OutputLineWithColor', $outputLineWithColor);
     }

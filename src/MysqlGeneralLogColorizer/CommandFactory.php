@@ -9,6 +9,8 @@ use MysqlGeneralLogColorizer\Command\LastCommandNewLine;
 class CommandFactory
 {
 
+    private $masterPatternForConnect = null;
+
     const EXAMPLE_OF_DATE_TIME_AT_BEGINNING_OF_LINE = '150221 11:16:48';
 
     /**
@@ -58,9 +60,9 @@ class CommandFactory
             $isConnect = preg_match('#([0-9]+) Connect\t([^ ]+)[\s]+on[\s]+([^ ]+)?$#', $rawLineWithoutDate, $matches);
             if ($isConnect) {
                 $idConnection = $matches[1];
-                $username = $matches[2];
+                $usernameWithHost = $matches[2];
                 $database = isset($matches[3]) ? $matches[3] : '';
-                return new Connect($rawLine, $idConnection, $username, $database);
+                return new Connect($rawLine, $idConnection, $usernameWithHost, $database, $this->masterPatternForConnect);
             }
             
             return new Unmanaged($rawLine);
@@ -68,5 +70,10 @@ class CommandFactory
             
             return new LastCommandNewLine($rawLine);
         }
+    }
+
+    public function setMasterPatternForConnect($masterPattern)
+    {
+        $this->masterPatternForConnect = $masterPattern;
     }
 }
