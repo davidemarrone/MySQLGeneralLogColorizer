@@ -25,9 +25,9 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
     public function testEnd2EndWithSimpleExampleFile()
     {
-        $filePointer = fopen(__DIR__ . '/../../fixtures/oneMasterOneSlave.txt', 'r');
+        $filePointer = fopen(__DIR__ . '/../../fixtures/oneMasterOneSlaveDifferentUsername.txt', 'r');
         
-        $outputString = file_get_contents(__DIR__ . '/../../fixtures/oneMasterOneSlave.txt.expected');
+        $outputString = file_get_contents(__DIR__ . '/../../fixtures/oneMasterOneSlaveDifferentUsername.txt.expected');
         $this->expectOutputString($outputString);
         
         $app = new Console\Application();
