@@ -35,7 +35,7 @@ class Application
         $usage .= 'Options' . PHP_EOL;
         $usage .= '' . PHP_EOL;
         $usage .= "    -m|--master-pattern\t\tSpecify the master pattern to identity the master connection" . PHP_EOL;
-        $usage .= "                       \t\tFor example: master, master@127.0.0.1, @127.0.0.1" . PHP_EOL;
+        $usage .= "                       \t\tFor example: master or master@127.0.0.1 or @127.0.0.1" . PHP_EOL;
         $usage .= '' . PHP_EOL;
         
         return $usage;
