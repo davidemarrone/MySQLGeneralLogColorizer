@@ -1,6 +1,6 @@
 MySQL General Log Colorizer 
 ===========================
-[![Build Status](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer.svg?branch=master)](https://travis-ci.org/davidemarrone/MysqlGeneralLogColorizer)
+[![Build Status](https://travis-ci.org/davidemarrone/MySQLGeneralLogColorizer.svg?branch=master)](https://travis-ci.org/davidemarrone/MySQLGeneralLogColorizer)
 
 Who is this tool for?
 ---------------------
